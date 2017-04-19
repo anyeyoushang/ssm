@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="dao.ItemsCustomMapper" >
+	<resultMap type="ItemsCustom" id="ItemsOrderdetail" extends="dao.base.ItemsMapper.BaseResultMap">
+		<collection property="orderdetailList" ofType="Orderdetail">
+		    <id column="orderdetailId" property="orderdetailid" jdbcType="INTEGER" />
+		    <result column="orders_id" property="ordersId" jdbcType="INTEGER" />
+		    <result column="items_id" property="itemsId" jdbcType="INTEGER" />
+		    <result column="items_num" property="itemsNum" jdbcType="INTEGER" />
+		    <result column="state" property="state" jdbcType="INTEGER" />
+		</collection>
+	</resultMap>
+
+	<select id="getItemsInfo" parameterType="Items" resultType="Items">
+		select * from items where id = #{id}
+	</select>
+	
+	<select id="getItemsOrderdetail" resultMap="ItemsOrderdetail">
+		SELECT i.*,od.orderdetailId,od.orders_id,od.items_id,od.items_num FROM items AS i LEFT JOIN orderdetail AS od ON od.items_id = i.id
+	</select>
+</mapper>
