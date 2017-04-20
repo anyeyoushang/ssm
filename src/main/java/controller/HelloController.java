@@ -7,7 +7,6 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import common.utils.CodeVal;
@@ -19,13 +18,13 @@ import entity.base.Items;
 
 @Controller
 @RequestMapping("/hello")
-public class HelloController {
+public class HelloController extends BaseController {
 	@Autowired
 	ItemsMapper itemsMapper;
 	
 //	@Autowired
 //	OrderdetailCustomMapper oMapper;
-//	
+
 	@Autowired
 	ItemsCustomMapper iMapper;
 	
@@ -41,7 +40,7 @@ public class HelloController {
 //		List<OrderdetailCustom> orderdetailItems = oMapper.getOrderdetailItems();
 //		return orderdetailItems;
 //	}
-//	
+	
 	@RequestMapping("/onetomany")
 	public @ResponseBody JsonData<List<ItemsCustom>> testOneToMany(){
 		List<ItemsCustom> itemsOrderdetail = iMapper.getItemsOrderdetail();
