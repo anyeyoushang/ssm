@@ -11,7 +11,7 @@ import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-public class Kuayu implements Filter {
+public class CrossDomain implements Filter {
 	public void destroy() {}
 	
 	public void doFilter(ServletRequest request, ServletResponse response,
