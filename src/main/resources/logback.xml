@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration debug="false" scan="true" scanPeriod="1000 seconds">
+	<timestamp key="date" datePattern="yyyyMMdd" />
+	<!-- Output to Console -->
+	<appender name="Console" class="ch.qos.logback.core.ConsoleAppender">
+		<encoder>
+			<pattern>%d{yyyy-MM-dd HH:mm:ss} %level %c:%L - %msg%n</pattern>
+			<charset>UTF-8</charset>
+		</encoder>
+	</appender>
+	<!-- Output to File -->
+	<appender name="File" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<!-- 被写入的文件名，可以是相对目录，也可以是绝对目录，如果上级目录不存在会自动创建，没有默认值。 -->
+		<!-- <File>/home/logs/springwind.log</File> -->
+		<!-- 当发生滚动时，决定 RollingFileAppender 的行为，涉及文件移动和重命名。 -->
+		<!-- 最常用的滚动策略，它根据时间来制定滚动策略，既负责滚动也负责出发滚动。 -->
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<FileNamePattern>
+				<fileNamePattern>${catalina.home}/log/log.%d{yyyy-MM-dd_HH}.log</fileNamePattern>
+			</FileNamePattern>
+			
+			<!-- keep 1 days worth of history -->
+			<MaxHistory>1</MaxHistory>
+		</rollingPolicy>
+		<!-- 对记录事件进行格式化 -->
+		<encoder>
+			<pattern>%d{yyyy-MM-dd HH:mm:ss} %level %c:%L - %msg%n</pattern>
+			<charset>UTF-8</charset>
+		</encoder>
+	</appender>
+	
+	<appender name="userblogFile" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <!-- <file>${catalina.home}/userblog/userblog.log</file> -->
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${catalina.home}/userblog/userblog.%d{yyyy-MM-dd}.log</fileNamePattern>
+        </rollingPolicy>
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+	<!-- <appender name="File"
+		class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<fileNamePattern>e:/log/log.%d{yyyy-MM-dd}.log</fileNamePattern>
+			<maxHistory>30</maxHistory>
+		</rollingPolicy>
+		<encoder>
+			<pattern>%-4relative [%thread] %-5level %logger{35} - %msg%n
+			</pattern>
+		</encoder>
+	</appender> -->
+	<!-- 打印级别，大小写无关：TRACE, DEBUG, INFO, WARN, ERROR, ALL 和 OFF 默认是DEBUG -->
+	<root level="ERROR">
+		<appender-ref ref="Console" />
+		<appender-ref ref="File" />
+	</root>
+	<logger name="org.springframework" level="ERROR" />
+	<logger name="controller" level="DEBUG" />
+	<logger name="dao" level="DEBUG" />
+	<logger name="service" level="DEBUG" />
+	
+	<logger name="userblog" level="INFO" additivity="false" >
+		<appender-ref ref="userblogFile"/>
+	</logger>
+	
+</configuration>
