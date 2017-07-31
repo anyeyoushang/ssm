@@ -59,6 +59,10 @@
 	<logger name="dao" level="DEBUG" />
 	<logger name="service" level="DEBUG" />
 	
+	<logger name="dao.LogbackDemo" level="INFO" additivity="true">
+		<appender-ref ref="Console"/>
+	</logger>
+	
 	<logger name="userblog" level="INFO" additivity="false" >
 		<appender-ref ref="userblogFile"/>
 	</logger>
