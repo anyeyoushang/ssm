@@ -36,21 +36,23 @@ public class HelloController extends BaseController {
 	@Autowired
 	ItemsService itemsService;
 	
+	@ResponseBody
 	@RequestMapping("/helloWorld")
-	public @ResponseBody Items helloWorld(HttpServletRequest request) throws Exception{
+	public Items helloWorld(HttpServletRequest request) throws Exception{
 		logger.info("123456");
 		String token = request.getHeader("tf-token");
 		String memberUid = request.getHeader("tf-uid");
 		JSONObject jsonObject = getparaJson(request);
 		System.out.println(jsonObject.getString("name"));
 		System.out.println(jsonObject.getString("age"));
-		// Items items = itemsMapper.selectByPrimaryKey(1);
-		Items items = itemsService.findById(1);
+		Items items = itemsMapper.selectByPrimaryKey(1);
+		// Items items = itemsService.findById(1);
 		return items;
 	}
 	
+	@ResponseBody
 	@RequestMapping("/update")
-	public @ResponseBody String updateTx(HttpServletRequest request) {
+	public String updateTx(HttpServletRequest request) {
 		try {
 			String id = request.getParameter("id");
 			String name = request.getParameter("name");
@@ -68,15 +70,17 @@ public class HelloController extends BaseController {
 //		return orderdetailItems;
 //	}
 	
+	@ResponseBody
 	@RequestMapping("/onetomany")
-	public @ResponseBody JsonData<List<ItemsCustom>> testOneToMany(){
+	public JsonData<List<ItemsCustom>> testOneToMany(){
 		List<ItemsCustom> itemsOrderdetail = iMapper.getItemsOrderdetail();
 		return new JsonData<List<ItemsCustom>>(CodeVal.SUCCESS, itemsOrderdetail);
 	}
 	
 	
+	@ResponseBody
 	@RequestMapping("/pptUpload")
-	public @ResponseBody JsonData<List<ItemsCustom>> pptUpload(){
+	public JsonData<List<ItemsCustom>> pptUpload(){
 		List<ItemsCustom> itemsOrderdetail = iMapper.getItemsOrderdetail();
 		return new JsonData<List<ItemsCustom>>(CodeVal.SUCCESS, itemsOrderdetail);
 	}

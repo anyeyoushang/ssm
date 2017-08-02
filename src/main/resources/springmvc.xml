@@ -39,7 +39,6 @@
 	</bean>
 	
 	<!-- 文件上传 -->
-	<!-- 文件上传 -->
 	<bean id="multipartResolver"
 		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
 		<!-- 设置上传文件的最大尺寸为5MB -->
@@ -59,4 +58,12 @@
 			</list>
 		</property>
 	</bean>
+	
+	<!--拦截器 -->
+	<mvc:interceptors>
+		<mvc:interceptor>
+			<mvc:mapping path="/**"/>
+			<bean class="common.interceptor.GlobalInterceptor"></bean>
+		</mvc:interceptor>
+	</mvc:interceptors>
 </beans>

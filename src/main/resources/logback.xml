@@ -55,6 +55,7 @@
 		<appender-ref ref="File" />
 	</root>
 	<logger name="org.springframework" level="ERROR" />
+	<logger name="org.springframework.web.servlet.DispatcherServlet" level="DEBUG" />
 	<logger name="controller" level="DEBUG" />
 	<logger name="dao" level="DEBUG" />
 	<logger name="service" level="DEBUG" />
@@ -64,7 +65,7 @@
 	</logger>
 	
 	<logger name="userblog" level="INFO" additivity="false" >
-		<appender-ref ref="userblogFile"/>
+		<appender-ref ref="userblogFile" />
 	</logger>
 	
 </configuration>
