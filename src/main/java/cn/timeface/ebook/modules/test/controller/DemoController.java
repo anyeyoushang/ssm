@@ -25,10 +25,10 @@ import cn.timeface.ebook.modules.test.entity.base.Items;
 import cn.timeface.ebook.modules.test.service.impl.ItemsServiceImpl;
 
 @Controller
-@RequestMapping("/hello")
-public class HelloController extends BaseController {
+@RequestMapping("/demo")
+public class DemoController extends BaseController {
 	
-	private static Logger logger = LoggerFactory.getLogger(HelloController.class);
+	private static Logger logger = LoggerFactory.getLogger(DemoController.class);
 	
 	@Autowired
 	ItemsServiceImpl itemsService;
@@ -37,7 +37,7 @@ public class HelloController extends BaseController {
 	ItemsCustomMapper ItemsCustomMapper;
 	
 	@ResponseBody
-	@RequestMapping("/helloWorld")
+	@RequestMapping("/hello")
 	public List<ItemsCustom> helloWorld(HttpServletRequest request) throws Exception{
 		logger.info("123456");
 		String token = request.getHeader("tf-token");
