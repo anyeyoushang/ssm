@@ -56,7 +56,7 @@
 	</root>
 	<logger name="org.springframework" level="ERROR" />
 	<logger name="org.springframework.web.servlet.DispatcherServlet" level="DEBUG" />
-	<logger name="controller" level="DEBUG" />
+	<logger name="cn.timeface.ebook" level="DEBUG" />
 	<logger name="dao" level="DEBUG" />
 	<logger name="service" level="DEBUG" />
 	

@@ -260,6 +260,11 @@
 			<version>2.4</version>
 			<classifier>jdk15</classifier>
 		</dependency>
+		<dependency>
+		    <groupId>org.apache.commons</groupId>
+		    <artifactId>commons-lang3</artifactId>
+		    <version>3.0</version>
+		</dependency>
 		<!-- 其他常用包 end' -->
 
 		<!-- freemarker begin -->
@@ -361,5 +366,12 @@
 			<version>${jcl-over-slf4j.version}</version>
 		</dependency>
 		<!-- log end -->
+		
+		<!-- https://mvnrepository.com/artifact/com.github.pagehelper/pagehelper -->
+		<dependency>
+		    <groupId>com.github.pagehelper</groupId>
+		    <artifactId>pagehelper</artifactId>
+		    <version>5.0.0</version>
+		</dependency>
 	</dependencies>
 </project>
